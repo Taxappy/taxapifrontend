@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-12 registrar">
     <div class="card card-container">
         <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
         <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
@@ -35,6 +35,23 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group">
+                <div class="input-group ">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="roles">Rol</label>
+                    </div>
+                    <select class="custom-select" id="roles" [(ngModel)]="form.rol" name="rol" required #rol="ngModel">
+                        <option [ngValue]="'user'" selected="true">Usuario</option>
+                        <option [ngValue]="'admin'">Administrador</option>
+                        <option [ngValue]="'tercero'">Tercero</option>
+                    </select>
+                </div>
+                <div class="alert-danger" *ngIf="f.submitted && rol.invalid">
+                    <div *ngIf="rol.errors.required">Rol is required</div>
+                </div>
+            </div>
+
+
             <div class="form-group">
                 <button class="btn btn-primary btn-block">Sign Up</button>
             </div>
