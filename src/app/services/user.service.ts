@@ -24,6 +24,6 @@ export class UserService {
   }
 
   getAdminBoard(): Observable<any> {
-    return this.http.get(API_URL + '/api/confeccionesapp/nadmin', { responseType: 'text' });
+    return this.http.get(API_URL + '/api/confeccionesapp/admin', { responseType: 'text' });
   }
 }
