@@ -7,7 +7,7 @@ body {
 /*============================================================ APP.COMPONENT ==============================================*/
 
 .navbar {
-    background-color: #55A12F;
+    background-color: rgb(75, 75, 74);
 }
 
 .navbar ul .nav-item {
@@ -15,7 +15,7 @@ body {
 }
 
 .navbar ul .nav-item.active {
-    background-color: #368011;
+    background-color: #888a88;
     border-radius: 5px;
 }
 
