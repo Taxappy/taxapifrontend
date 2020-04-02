@@ -16,6 +16,7 @@ export class MapviewComponent implements OnInit {
 
   coordsActua: any;
   marcadores: Marcador[] = [];
+  marcadoresActual: Marcador[] = [];
 
   lat: number;
   lng: 75.61827329202217;
@@ -44,6 +45,7 @@ export class MapviewComponent implements OnInit {
       this.marcadores = [];
       const nuevoMarcador = new Marcador(ubicacion.coords.latitude, ubicacion.coords.longitude);
       this.marcadores.push(nuevoMarcador);
+      this.marcadoresActual.push(nuevoMarcador);
       console.log(this.marcadores);
     }
 
