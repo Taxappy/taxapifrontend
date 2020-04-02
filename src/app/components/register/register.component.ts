@@ -13,31 +13,37 @@ export class RegisterComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
   isAdmin = false;
+  isLoggedIn = false;
   private roles: string[];
 
   constructor(private authService: AuthService, private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
   }
 
   onSubmit() {
-    const user = this.tokenStorageService.getUser();
-    this.roles = user.roles;
-    this.isAdmin = this.roles.includes('ROLE_ADMIN');
-
-    if (this.isAdmin) {
-      this.authService.register(this.form).subscribe(
-        data => {
-          console.log(data);
-          this.isSuccessful = true;
-          this.isSignUpFailed = false;
-        },
-        err => {
-          this.errorMessage = err.error.message;
-          this.isSignUpFailed = true;
-        }
-      );
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+      this.isAdmin = this.roles.includes('ROLE_ADMIN');
+      if (!this.isAdmin) {
+        this.form.rol = 'user';
+      }
+    } else {
+      this.form.rol = 'user';
     }
+    this.authService.register(this.form).subscribe(
+      data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
 
   }
 

@@ -2,6 +2,7 @@
 body {
     font-family: 'Open Sans', sans-serif;
     background-image: url('./assets/fondo.jpg');
+    background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
@@ -38,12 +39,12 @@ body {
 }
 
 .iniciar-secion form .btn {
-    background-color: #55A12F;
+    background-color: rgb(75, 75, 74);
     transition: all 0.5s;
 }
 
 .iniciar-secion form .btn:hover {
-    background-color: #368011;
+    background-color: #888a88;
 }
 
 
@@ -60,10 +61,10 @@ body {
 }
 
 .registrar form .btn {
-    background-color: #55A12F;
+    background-color: rgb(75, 75, 74);
     transition: all 0.5s;
 }
 
 .registrar form .btn:hover {
-    background-color: #368011;
+    background-color: #888a88;
 }
