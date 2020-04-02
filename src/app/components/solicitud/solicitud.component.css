@@ -1,0 +1,9 @@
+.primarieColor {
+    background-color: rgb(58, 57, 57);
+    color: #ffffff;
+}
+
+.primarieColor:hover {
+    background-color: rgb(255, 255, 0);
+    color: black;
+}

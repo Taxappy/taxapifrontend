@@ -18,6 +18,7 @@ import { BoardUserComponent } from './components/board-user/board-user.component
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 
 import { MapviewComponent } from './components/mapview/mapview.component';
+import { SolicitudComponent } from './components/solicitud/solicitud.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MapviewComponent } from './components/mapview/mapview.component';
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
-    MapviewComponent
+    MapviewComponent,
+    SolicitudComponent
   ],
   imports: [
     BrowserModule,
