@@ -8,6 +8,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { BoardUserComponent } from './components/board-user/board-user.component';
 import { BoardModeratorComponent } from './components/board-moderator/board-moderator.component';
 import { BoardAdminComponent } from './components/board-admin/board-admin.component';
+import { TaxiHomeComponent } from './components/taxi/taxi-home/taxi-home.component';
+import { ListTaxiComponent } from './components/taxi/list-taxi/list-taxi.component';
+
 
 
 const routes: Routes = [
@@ -18,6 +21,8 @@ const routes: Routes = [
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
+   {path: 'TaxiHome' , component: TaxiHomeComponent },
+   {path: 'TaxiList', component: ListTaxiComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

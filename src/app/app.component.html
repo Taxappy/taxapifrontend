@@ -14,6 +14,9 @@
             <li class="nav-item" routerLinkActive="active">
                 <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
             </li>
+
+            <app-taxi-home *ngIf="showAdminBoard"></app-taxi-home>
+
         </ul>
 
         <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">

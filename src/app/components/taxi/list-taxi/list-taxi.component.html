@@ -1,0 +1,15 @@
+<h1>Lista de Taxis</h1>
+<br>
+<div class="row row-cols-1 row-cols-md-3">
+    <div class="col mb-4" *ngFor='let taxi of taxis; let i = index' >
+      <div class="card h-100">
+        <div class="card-body" >
+          <h5 class="card-title">Taxi matriculado en empresa</h5>
+          <p class="card-text">Placa: {{taxi.placa}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)='deleteTaxi(taxi.placa, i)'>Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>

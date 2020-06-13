@@ -5,6 +5,9 @@ import { AgmCoreModule } from '@agm/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -19,6 +22,9 @@ import { authInterceptorProviders } from './helpers/auth.interceptor';
 
 import { MapviewComponent } from './components/mapview/mapview.component';
 import { SolicitudComponent } from './components/solicitud/solicitud.component';
+import { ListTaxiComponent } from './components/taxi/list-taxi/list-taxi.component';
+import { TaxiHomeComponent } from './components/taxi/taxi-home/taxi-home.component';
+import { CreateTaxiComponent } from './components/taxi/create-taxi/create-taxi.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +37,17 @@ import { SolicitudComponent } from './components/solicitud/solicitud.component';
     BoardModeratorComponent,
     BoardUserComponent,
     MapviewComponent,
-    SolicitudComponent
+    SolicitudComponent,
+    ListTaxiComponent,
+    TaxiHomeComponent,
+    CreateTaxiComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    SweetAlert2Module.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCWOR0jWaJbXeWJ6-UgMOIPT_d7O1idxiE'
     })

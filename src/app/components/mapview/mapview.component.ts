@@ -20,7 +20,7 @@ export class MapviewComponent implements OnInit {
 
   lat: number;
   lng: 75.61827329202217;
-
+/*
   mostrarUbicacion(ubicacion) {
     console.log('entre aqui')
     const lng = ubicacion.coords.longitude;
@@ -35,7 +35,7 @@ export class MapviewComponent implements OnInit {
     // console.log(this.marcadores);
 
   }
-
+*/
   constructor() {
 
     // this.marcadores = [];
@@ -69,12 +69,9 @@ export class MapviewComponent implements OnInit {
 
   }
 
-  abc(ubicacion) {
 
-  }
 
   cambiarMarcador(evento) {
-
     this.marcadores = [];
     const coords: { lat: number, lng: number } = evento.coords;
     const nuevoMarcador = new Marcador(coords.lat, coords.lng);
