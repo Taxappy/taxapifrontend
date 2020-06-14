@@ -1,68 +1,105 @@
-<div class="col-md-12 registrar">
-    <div class="card card-container">
-        <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
-        <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-            <div class="form-group">
+<!-- Button trigger modal -->
+<a class="nav-link" data-toggle="modal" data-target="#exampleModal">Registro</a>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+        <div class="col-md-12 registrar">
+          <div class="card card-container">
+            <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
+            <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+              <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required minlength="3" maxlength="20" #username="ngModel" />
+                <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required
+                  minlength="3" maxlength="20" #username="ngModel" />
                 <div class="alert-danger" *ngIf="f.submitted && username.invalid">
-                    <div *ngIf="username.errors.required">Username is required</div>
-                    <div *ngIf="username.errors.minlength">
-                        Username must be at least 3 characters
-                    </div>
-                    <div *ngIf="username.errors.maxlength">
-                        Username must be at most 20 characters
-                    </div>
+                  <div *ngIf="username.errors.required">Username is required</div>
+                  <div *ngIf="username.errors.minlength">
+                    Username must be at least 3 characters
+                  </div>
+                  <div *ngIf="username.errors.maxlength">
+                    Username must be at most 20 characters
+                  </div>
                 </div>
-            </div>
-            <div class="form-group">
+              </div>
+
+
+              <div class="form-group">
+                <label for="identificacion">Cedula</label>
+                <input type="identificacion" class="form-control" name="identificacion"
+                  [(ngModel)]="form.identificacion" required identificacion maxlength="10" #identificacion="ngModel" />
+                <div class="alert-danger" *ngIf="f.submitted && identificacion.invalid">
+                  <div *ngIf="identificacion.errors.required">Email is required</div>
+                  <div *ngIf="identificacion.errors.identificacion">
+                    Email must be a valid email address
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" name="email" [(ngModel)]="form.email" required email #email="ngModel" />
+                <input type="email" class="form-control" name="email" [(ngModel)]="form.email" required email
+                  #email="ngModel" />
                 <div class="alert-danger" *ngIf="f.submitted && email.invalid">
-                    <div *ngIf="email.errors.required">Email is required</div>
-                    <div *ngIf="email.errors.email">
-                        Email must be a valid email address
-                    </div>
+                  <div *ngIf="email.errors.required">Email is required</div>
+                  <div *ngIf="email.errors.email">
+                    Email must be a valid email address
+                  </div>
                 </div>
-            </div>
-            <div class="form-group">
+              </div>
+              <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="6" #password="ngModel" />
+                <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required
+                  minlength="6" #password="ngModel" />
                 <div class="alert-danger" *ngIf="f.submitted && password.invalid">
-                    <div *ngIf="password.errors.required">Password is required</div>
-                    <div *ngIf="password.errors.minlength">
-                        Password must be at least 6 characters
-                    </div>
+                  <div *ngIf="password.errors.required">Password is required</div>
+                  <div *ngIf="password.errors.minlength">
+                    Password must be at least 6 characters
+                  </div>
                 </div>
-            </div>
-            <div class="form-group" *ngIf="isLoggedIn">
-                <div class="input-group ">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="roles">Rol</label>
-                    </div>
-                    <select class="custom-select" id="roles" [(ngModel)]="form.rol" name="rol" required #rol="ngModel">
-                        <option [ngValue]="'user'" selected="true">Usuario</option>
-                        <option [ngValue]="'admin'">Administrador</option>
-                        <option [ngValue]="'tercero'">Tercero</option>
-                    </select>
-                </div>
-                <div class="alert-danger" *ngIf="f.submitted && rol.invalid">
-                    <div *ngIf="rol.errors.required">Rol is required</div>
-                </div>
-            </div>
+              </div>
 
 
-            <div class="form-group">
-                <button class="btn btn-primary btn-block">Sign Up</button>
-            </div>
+              <div class="form-group">
+                <label for="movilee">Celular</label>
+                <input type="movile" class="form-control" name="movile" [(ngModel)]="form.movile" required movile
+                  maxlength="10" #movile="ngModel" />
+                <div class="alert-danger" *ngIf="f.submitted && movile.invalid">
+                  <div *ngIf="movile.errors.required">Email is required</div>
+                  <div *ngIf="movile.errors.movile">
+                    Email must be a valid email address
+                  </div>
+                </div>
+              </div>
 
-            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+
+
+              <div class="form-group">
+                <button class="btn btn-primary btn-block">Registrarme</button>
+              </div>
+
+              <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
                 Signup failed!<br />{{ errorMessage }}
-            </div>
-        </form>
+              </div>
+            </form>
 
-        <div class="alert alert-success" *ngIf="isSuccessful">
-            Your registration is successful!
+            <div class="alert alert-success" *ngIf="isSuccessful">
+              Your registration is successful!
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

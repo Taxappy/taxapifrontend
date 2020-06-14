@@ -24,11 +24,16 @@ export class AuthService {
 
   register(user): Observable<any> {
     console.log(user);
+    const rol = [user.role];
+
+
     return this.http.post(AUTH_API + '/api/auth/signup', {
       username: user.username,
+      identificacion: user.identificacion,
+      movile: user.movile,
       email: user.email,
       password: user.password,
-      //rol: JSON.parse(user.rol)
+      roles: user.role ,
     }, httpOptions);
   }
 }
