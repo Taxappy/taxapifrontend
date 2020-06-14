@@ -1,44 +1,68 @@
 <div id="app">
-    <nav class="navbar navbar-expand navbar-dark ">
-        <a href="#" class="navbar-brand">Taxappy</a>
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item" routerLinkActive="active">
-                <a href="/home" class="nav-link" routerLink="home">Home </a>
-            </li>
-            <li class="nav-item" *ngIf="showAdminBoard" routerLinkActive="active">
-                <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
-            </li>
-            <li class="nav-item" *ngIf="showModeratorBoard" routerLinkActive="active">
-                <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
-            </li>
+  <nav class="navbar navbar-expand navbar-dark ">
+    <a href="#" class="navbar-brand">Taxappy</a>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a href="/home" class="nav-link" routerLink="home">Home </a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard" routerLinkActive="active">
+        <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
+      </li>
+      <li class="nav-item" *ngIf="showModeratorBoard" routerLinkActive="active">
+        <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
+      </li>
 
-            <app-taxi-home *ngIf="showAdminBoard"></app-taxi-home>
+      <app-taxi-home *ngIf="showAdminBoard"></app-taxi-home>
 
-        </ul>
 
-        <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
-            <li class="nav-item" routerLinkActive="active">
-               <app-register></app-register>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a href="/login" class="nav-link" routerLink="login">Login</a>
-            </li>
-        </ul>
+      <li class="nav-item" routerLinkActive="active" *ngIf="isLoggedIn">
 
-        <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-            <li class="nav-item" routerLinkActive="active">
-                <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
-            </li>
-            <li class="nav-item">
-                <a href class="nav-link" (click)="logout()">LogOut</a>
-            </li>
-        </ul>
-    </nav>
+        <app-register ></app-register>
 
-    <div class="container">
-        <router-outlet></router-outlet>
-    </div>
+      </li>
+
+
+<li class="nav-item dropdown" routerLinkActive="active" *ngIf="showAdminBoard">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+    aria-haspopup="true" aria-expanded="false">
+    Taxista
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+    <a class="dropdown-item" routerLink="TaxistaList"><svg class="bi bi-list-check" width="1em" height="1em"
+        viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
+      </svg> Listar</a>
+  </div>
+</li>
+
+
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav-item" routerLinkActive="active">
+        <app-register></app-register>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a href="/login" class="nav-link" routerLink="login">Login</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item" routerLinkActive="active">
+        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+      </li>
+      <li class="nav-item">
+        <a href class="nav-link" (click)="logout()">LogOut</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
 </div>

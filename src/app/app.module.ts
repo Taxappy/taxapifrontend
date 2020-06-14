@@ -11,7 +11,11 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+import { HomeEmpleadosComponent } from './components/Empleados/home-empleados/home-empleados.component';
+import { RegisterComponent } from './components/Empleados/register/register.component';
+
+import { TaxistaOFListComponent } from './components/Empleados/taxista-oflist/taxista-oflist.component';
+
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { BoardAdminComponent } from './components/board-admin/board-admin.component';
@@ -25,6 +29,8 @@ import { SolicitudComponent } from './components/solicitud/solicitud.component';
 import { ListTaxiComponent } from './components/taxi/list-taxi/list-taxi.component';
 import { TaxiHomeComponent } from './components/taxi/taxi-home/taxi-home.component';
 import { CreateTaxiComponent } from './components/taxi/create-taxi/create-taxi.component';
+
+
 
 @NgModule({
   declarations: [
@@ -40,7 +46,10 @@ import { CreateTaxiComponent } from './components/taxi/create-taxi/create-taxi.c
     SolicitudComponent,
     ListTaxiComponent,
     TaxiHomeComponent,
-    CreateTaxiComponent
+    CreateTaxiComponent,
+    HomeEmpleadosComponent,
+    TaxistaOFListComponent
+
   ],
   imports: [
     BrowserModule,

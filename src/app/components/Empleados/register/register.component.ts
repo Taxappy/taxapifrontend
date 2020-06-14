@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import Swal from 'sweetalert2';
 
@@ -45,6 +46,17 @@ export class RegisterComponent implements OnInit {
     this.form.role = [this.form.role];
     this.authService.register(this.form ).subscribe(
       data => {
+        if(this.form.role[0] == "user"){
+          this.authService.registerUser(this.form).subscribe( data => {
+            console.log("registro exitoso usuario")
+          });
+        }
+
+        if(this.form.role[0] == "taxista"){
+          this.authService.registerTaxista(this.form).subscribe( data => {
+            console.log("registro exitoso usuario")
+          });
+        }
         this.isSuccessful = true;
         this.isSignUpFailed = false;
         Swal.fire({
@@ -64,6 +76,10 @@ export class RegisterComponent implements OnInit {
         });
       }
     );
+
+
+
+
 
   }
 

@@ -1,13 +1,31 @@
 <!-- Button trigger modal -->
-<a class="nav-link" data-toggle="modal" data-target="#exampleModal">Registro</a>
+<a *ngIf="!isLoggedIn" class="nav-link btn-register" data-toggle="modal" data-target="#modalRegister"><svg
+  class="bi bi-plus-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+  xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd"
+    d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z" />
+  <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z" />
+  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+</svg>  Registro</a>
+
+
+<a  *ngIf="isLoggedIn"  class="nav-link btn-register" data-toggle="modal" data-target="#modalRegister"><svg
+  class="bi bi-plus-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+  xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd"
+    d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z" />
+  <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z" />
+  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+</svg>  Registro Empleados</a>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="modalRegister" tabindex="1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel" *ngIf="isLoggedIn">Registro empleados </h5>
+        <h5 class="modal-title" id="exampleModalLabel" *ngIf="!isLoggedIn">Registro</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -17,8 +35,28 @@
 
         <div class="col-md-12 registrar">
           <div class="card card-container">
-            <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
+            <div class="container-imgProfile">
+            <img id="profile-img" src="../../../assets/profile.png" class="profile-img-card img-profile" />
+          </div>
             <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+
+              <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" class="form-control" name="name" [(ngModel)]="form.name" required
+                  minlength="3" maxlength="20" #name="ngModel" />
+                <div class="alert-danger" *ngIf="f.submitted && name.invalid">
+                  <div *ngIf="name.errors.required">name is required</div>
+                  <div *ngIf="name.errors.minlength">
+                    name must be at least 3 characters
+                  </div>
+                  <div *ngIf="name.errors.maxlength">
+                   name must be at most 20 characters
+                  </div>
+                </div>
+              </div>
+
+
               <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required
@@ -40,7 +78,7 @@
                 <input type="identificacion" class="form-control" name="identificacion"
                   [(ngModel)]="form.identificacion" required identificacion maxlength="10" #identificacion="ngModel" />
                 <div class="alert-danger" *ngIf="f.submitted && identificacion.invalid">
-                  <div *ngIf="identificacion.errors.required">Email is required</div>
+                  <div *ngIf="identificacion.errors.required">Cedula is required</div>
                   <div *ngIf="identificacion.errors.identificacion">
                     Email must be a valid email address
                   </div>
@@ -58,6 +96,7 @@
                   </div>
                 </div>
               </div>
+
               <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required
@@ -94,22 +133,18 @@
                   <label class="form-check-label" for="role">Administrador</label>
                 </div>
                 <div class="alert-danger" *ngIf="f.submitted && role.invalid">
-                  <div *ngIf="movile.errors.required">Rol is required</div>                  
+                  <div *ngIf="movile.errors.required">Rol is required</div>
                 </div>
               </div>
 
               <div class="form-group">
-                <button class="btn btn-primary btn-block">Registrarme</button>
+                <button class="btn btn-primary btn-block" >Registrar</button>
               </div>
 
               <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
                 Signup failed!<br />{{ errorMessage }}
               </div>
             </form>
-
-            <div class="alert alert-success" *ngIf="isSuccessful">
-              Your registration is successful!
-            </div>
           </div>
         </div>
       </div>
