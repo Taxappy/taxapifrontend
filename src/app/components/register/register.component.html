@@ -72,7 +72,7 @@
 
 
               <div class="form-group">
-                <label for="movilee">Celular</label>
+                <label for="movile">Celular</label>
                 <input type="movile" class="form-control" name="movile" [(ngModel)]="form.movile" required movile
                   maxlength="10" #movile="ngModel" />
                 <div class="alert-danger" *ngIf="f.submitted && movile.invalid">
@@ -83,7 +83,20 @@
                 </div>
               </div>
 
-
+              <div class="form-group" *ngIf="isLoggedIn">
+                <div>Rol</div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" value="taxista" name="role" [(ngModel)]="form.role" #role="ngModel" required>
+                  <label class="form-check-label" for="role">Taxista</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" value="admin" name="role" [(ngModel)]="form.role" #role="ngModel" required>
+                  <label class="form-check-label" for="role">Administrador</label>
+                </div>
+                <div class="alert-danger" *ngIf="f.submitted && role.invalid">
+                  <div *ngIf="movile.errors.required">Rol is required</div>                  
+                </div>
+              </div>
 
               <div class="form-group">
                 <button class="btn btn-primary btn-block">Registrarme</button>

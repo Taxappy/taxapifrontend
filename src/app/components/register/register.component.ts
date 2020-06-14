@@ -31,16 +31,20 @@ export class RegisterComponent implements OnInit {
       this.isAdmin = this.roles.includes('ROLE_ADMIN');
 
       if (!this.isAdmin) {
-        this.form.role = 'admin';
-        this.form.role = [this.form.role];
+        Swal.fire({
+          icon: 'error',
+          title: 'No tiene permisos para realizar esta operación',
+          showConfirmButton: false,
+          timer: 2500
+        });
+        return;
       }
     } else {
-      this.form.role = 'admin';
-      this.form.role = [this.form.role];
+      this.form.role = 'user';
     }
+    this.form.role = [this.form.role];
     this.authService.register(this.form ).subscribe(
       data => {
-        console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
         Swal.fire({

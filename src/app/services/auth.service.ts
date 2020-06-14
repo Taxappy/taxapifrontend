@@ -23,10 +23,6 @@ export class AuthService {
   }
 
   register(user): Observable<any> {
-    console.log(user);
-    const rol = [user.role];
-
-
     return this.http.post(AUTH_API + '/api/auth/signup', {
       username: user.username,
       identificacion: user.identificacion,
