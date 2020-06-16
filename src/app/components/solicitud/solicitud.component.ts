@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-solicitud',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SolicitudComponent implements OnInit {
 
-  constructor() { }
+  datos = {
+    id: '',
+    nombre: ''
+  };
+
+  @Output() pedirViaje = new EventEmitter<any>();
+
+  constructor() {
+    this.pedirViaje = new EventEmitter();
+   }
 
   ngOnInit(): void {
+  }
+
+  pedirTaxi() {
+    this.pedirViaje.emit(this.datos);
   }
 
 }

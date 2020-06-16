@@ -29,6 +29,10 @@ import { SolicitudComponent } from './components/solicitud/solicitud.component';
 import { ListTaxiComponent } from './components/taxi/list-taxi/list-taxi.component';
 import { TaxiHomeComponent } from './components/taxi/taxi-home/taxi-home.component';
 import { CreateTaxiComponent } from './components/taxi/create-taxi/create-taxi.component';
+import { ConfiguracionesTaxistaComponent } from './components/taxista/configuraciones-taxista/configuraciones-taxista.component';
+import { HistorialTaxistaComponent } from './components/taxista/historial-taxista/historial-taxista.component';
+import { HomeTaxistaComponent } from './components/taxista/home-taxista/home-taxista.component';
+import { MapviewTaxistaComponent } from './components/taxista/mapview-taxista/mapview-taxista.component';
 
 
 
@@ -48,7 +52,11 @@ import { CreateTaxiComponent } from './components/taxi/create-taxi/create-taxi.c
     TaxiHomeComponent,
     CreateTaxiComponent,
     HomeEmpleadosComponent,
-    TaxistaOFListComponent
+    TaxistaOFListComponent,
+    ConfiguracionesTaxistaComponent,
+    HistorialTaxistaComponent,
+    HomeTaxistaComponent,
+    MapviewTaxistaComponent
 
   ],
   imports: [

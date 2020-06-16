@@ -1,0 +1,17 @@
+<agm-map [latitude]="posActual.lat" [longitude]="posActual.lng" [zoom]="15" [clickableIcons]="false" >
+    <agm-marker *ngFor="let viaje of viajes; let i = index" [latitude]="viaje.latitud" [longitude]="viaje.longitud">
+        <agm-info-window>
+            <strong>Hola</strong>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, sunt inventore facilis rem sed
+                consequuntur.
+            </p>
+            <div>
+                <button (click)="aceptarViaje(viaje)">Aceptar</button>
+                <button>Rechazar</button>
+            </div>
+        </agm-info-window>
+    </agm-marker>
+    
+    
+</agm-map>

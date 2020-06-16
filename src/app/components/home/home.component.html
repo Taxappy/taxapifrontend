@@ -1,7 +1,7 @@
 <div class="container">
-    <app-mapview></app-mapview>
+    <app-mapview (ubicacion)="setUbicacion($event)"></app-mapview>
 </div>
 
 <div class="button-solicitud">
-    <app-solicitud></app-solicitud>
+    <app-solicitud (pedirViaje)="pedirTaxi($event)"></app-solicitud>
 </div>
