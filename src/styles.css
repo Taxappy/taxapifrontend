@@ -1,18 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+:root {
+    --primary-color: #0f6153;
+    --secondary-color: #68968e;
+
+    --primary-text-color: #484848;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
-    background-image: url('./assets/fondo.jpg');
+    /* background-image: url('./assets/Fondo1-integrador.jpg'); */
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
+    width: 100%;    
 }
 
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-text-color);
+}
+
+.img-fondo {
+    z-index: -1;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+}
+
+.contenedor-info {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 5rem;
+    border-radius: 4px;
+}
 
 /*============================================================ APP.COMPONENT ==============================================*/
 
 .navbar {
-    background-color: rgb(75, 75, 74);
+    background-color: var(--primary-color);
 }
 
 .navbar ul .nav-item {
@@ -20,7 +45,7 @@ body {
 }
 
 .navbar ul .nav-item.active {
-    background-color: #888a88;
+    background-color: var(--secondary-color);
     border-radius: 5px;
 }
 
@@ -39,12 +64,12 @@ body {
 }
 
 .iniciar-secion form .btn {
-    background-color: rgb(75, 75, 74);
+    background-color: var(--primary-color);
     transition: all 0.5s;
 }
 
 .iniciar-secion form .btn:hover {
-    background-color: #888a88;
+    background-color: var(--secondary-color);
 }
 
 
@@ -61,10 +86,38 @@ body {
 }
 
 .registrar form .btn {
-    background-color: rgb(75, 75, 74);
+    background-color: var(--primary-color);
     transition: all 0.5s;
 }
 
 .registrar form .btn:hover {
-    background-color: #888a88;
+    background-color: var(--secondary-color);
+}
+
+
+
+/*============================================================ BBOTONES ==============================================*/
+
+.boton-principal {
+    background-color: var(--primary-color) !important;
+    color: #ffffff !important;
+}
+
+.boton-principal:hover {
+    background-color: var(--secondary-color) !important;
+}
+
+.boton-secundario {
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+}
+
+.boton-secundario:hover {
+    background-color: var(--secondary-color) !important;
+    color: #ffffff !important;
+}
+
+.boton-terceario {
+    cursor: pointer !important;
+    color: var(--primary-color) !important;
 }

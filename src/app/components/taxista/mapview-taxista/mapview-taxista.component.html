@@ -1,0 +1,18 @@
+<div class="contenedor-mapa">
+    <agm-map [latitude]="posActual.lat" [longitude]="posActual.lng" [zoom]="15" [clickableIcons]="false">
+        <agm-marker *ngFor="let viaje of viajes; let i = index" [latitude]="viaje.latitud" [longitude]="viaje.longitud">
+            <agm-info-window *ngIf="disponible">
+                <strong>Hola amigo taxista</strong>
+                <p>
+                    ¿Me recoges?
+                </p>
+                <div class="botones">
+                    <button class="btn boton-principal btn-sm" (click)="aceptarViaje(viaje)">Aceptar</button>
+                    <button class="btn boton-secundario btn-sm">Rechazar</button>
+                </div>
+            </agm-info-window>
+        </agm-marker>
+
+
+    </agm-map>
+</div>

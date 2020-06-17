@@ -1,9 +1,18 @@
-.primarieColor {
-    background-color: rgb(58, 57, 57);
+.boton-principal {
+    background-color: var(--primary-color);
     color: #ffffff;
 }
 
-.primarieColor:hover {
-    background-color: rgb(255, 255, 0);
-    color: black;
+.boton-principal:hover {
+    background-color: var(--secondary-color);
+}
+
+.boton-secundario {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.boton-secundario:hover {
+    background-color: var(--primary-color);
+    color: white;
 }

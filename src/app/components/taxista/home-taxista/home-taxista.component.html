@@ -1,0 +1,32 @@
+<div class="contenedor-info">
+    <div class="contenedor-home-taxista">
+        <div class="elemento-home-taxista" id="seleccion-taxi">
+            <h1>Seleccione taxi</h1>
+            <div class="row row-cols-1 row-cols-md-3">
+                <div class="col mb-4" *ngFor='let taxi of taxis; let i = index'>
+                    <div class="hvr-shadow card h-100 ">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa: {{taxi.placa}}</h5>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary boton-principal"
+                                (click)="seleccionarTaxi(taxi)">Seleccionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="elemento-home-taxista" id="mapa-viajes">
+            <h1>Panel de solicitudes</h1>
+            <h4>Lleva a un nuevo amigo a su destino</h4>
+            <br>
+            <app-mapview-taxista [viajes]="viajes" [disponible]="disponible"
+                (noficarViajeAceptado)="aceptarViaje($event)"></app-mapview-taxista>
+        </div>
+    </div>
+    <div class="button-finalizar" *ngIf="!disponible && placaTaxi != ''">
+        <button class="btn boton-principal" (click)=finalizarViaje()>
+            Finalizar viaje
+        </button>
+    </div>
+</div>
