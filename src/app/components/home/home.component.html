@@ -1,7 +1,20 @@
-<div class="container">
-    <app-mapview (ubicacion)="setUbicacion($event)"></app-mapview>
-</div>
+<div class="contenedor-info">
+    <div class="">
+        <h1>Bienvenido a Taxappy</h1>
+        <h4>¿Y si viajamos juntos hoy?</h4>
+    </div>
+    <br>
 
-<div class="button-solicitud">
-    <app-solicitud (pedirViaje)="pedirTaxi($event)"></app-solicitud>
+    <div class="container">
+        <app-mapview (ubicacion)="setUbicacion($event)"></app-mapview>
+    </div>
+
+    <div class="button-solicitud">
+        <app-solicitud (pedirViaje)="pedirTaxi($event)"></app-solicitud>
+    </div>
+
+    <div class="lista-viajes" *ngIf="viajes.length != 0">
+        <h1>Viajes Sesión Actual</h1>
+        <app-historial-viajes [viajes]="viajes" (cancelar)="cancelarViaje($event)"></app-historial-viajes>
+    </div>
 </div>

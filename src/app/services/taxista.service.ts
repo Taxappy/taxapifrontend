@@ -29,4 +29,15 @@ export class TaxistaService {
   usarTaxi(data): Observable<any> {
     return this.http.post(URL_MICROSERVER + '/taxista/usotaxi', data);
   }
+
+  setViajeActual(viaje?: any) {
+    if (!viaje) {
+      viaje = null;
+    }
+    window.sessionStorage.setItem('viaje_actual', JSON.stringify(viaje));
+  }
+
+  getViajeActual() {
+    return JSON.parse(sessionStorage.getItem('viaje_actual'));
+  }
 }

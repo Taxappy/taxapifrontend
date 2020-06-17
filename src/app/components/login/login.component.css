@@ -1,0 +1,24 @@
+.iniciar-secion {
+    background-color: rgba(255, 255, 255, 0.3);
+    height: 500px;
+    display: flex;
+    align-items: center;
+}
+
+.contenedor-login {
+    margin: 2rem;
+    background-color: #ffff;
+}
+
+
+.contenedor-img-profile {
+    text-align: center;
+}
+
+.profile-img-card {
+    padding: 3rem;   
+    width: 90%;
+}
+
+
+

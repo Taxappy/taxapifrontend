@@ -20,6 +20,21 @@
     transition: 1s all;
 }
 
+.button-finalizar {
+    display: flex;
+    justify-content: center;
+    margin-top: 3em;
+}
+
+.boton-principal {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.boton-principal:hover {
+    background-color: var(--secondary-color);
+}
+
 /* Shadow */
 
 .hvr-shadow {

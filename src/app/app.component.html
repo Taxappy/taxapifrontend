@@ -1,12 +1,14 @@
 <div id="app">
     <nav class="navbar navbar-expand navbar-dark ">
-        <a href="#" class="navbar-brand">Taxappy</a>
+        <a href="#" class="navbar-brand">
+            <img src="../assets/Logo-taxappy.png" alt="" width="125px">
+        </a>
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item" routerLinkActive="active" *ngIf="!showTaxistaBoard">
+            <li class="nav-item" routerLinkActive="active" *ngIf="!showTaxistaBoard && !showAdminBoard">
                 <a href="/home" class="nav-link" routerLink="home">Home </a>
             </li>
-            <li class="nav-item" *ngIf="showAdminBoard" routerLinkActive="active">
-                <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
+            <li class="nav-item" routerLinkActive="active" *ngIf="!showTaxistaBoard && isLoggedIn && !showAdminBoard">
+                <a href="/historial" class="nav-link" routerLink="historial">Historial</a>
             </li>
 
             <app-taxi-home *ngIf="showAdminBoard"></app-taxi-home>
@@ -60,8 +62,8 @@
         </ul>
 
         <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-            <li class="nav-item" routerLinkActive="active">
-                <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+            <li class="nav-item" >
+                <a  class="nav-link">{{ username }}</a>
             </li>
             <li class="nav-item">
                 <a href class="nav-link" (click)="logout()">LogOut</a>

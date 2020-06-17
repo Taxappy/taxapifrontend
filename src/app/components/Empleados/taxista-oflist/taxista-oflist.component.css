@@ -1,3 +1,9 @@
+thead tr th{
+  background-color: var(--secondary-color) !important;
+  border-color: var(--primary-color) !important;;
+}
+
+
 .boton-nav {
   text-decoration: none;
   padding: 0.5em;

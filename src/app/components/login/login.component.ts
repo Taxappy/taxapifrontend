@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit {
       this.roles = this.tokenStorage.getUser().roles;
       if (this.roles.includes('ROLE_TAXISTA')) {
         this.router.navigate(['/TaxisitaHome']);
+      } else if(this.roles.includes('ROLE_ADMIN')) {
+        this.router.navigate(['/TaxiList']);
       } else {
         this.router.navigate(['/home']);
       }

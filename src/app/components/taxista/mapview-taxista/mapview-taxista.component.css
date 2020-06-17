@@ -1,3 +1,41 @@
+.contenedor-mapa {
+    border: 2px solid rgb(185, 185, 185);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
 agm-map {
     height: 500px;
+    
 }
+
+
+.botones {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    margin: 5px;
+}
+
+.boton-principal {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.boton-principal:hover {
+    background-color: var(--secondary-color);
+}
+
+.boton-secundario {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.boton-secundario:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+

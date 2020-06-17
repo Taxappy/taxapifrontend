@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { ViajesService } from 'src/app/services/viajes.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     lat: '',
     lng: ''
   };
-  viaje:any = {};
+
+  viajes: any = [];
+  codigos: any = [];
+  viaje: any = {};
 
   codViaje: string;
 
@@ -33,24 +37,29 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.viajeService.initializeWebSocketRespuestaDeViaje();
 
     this.viajeService.taxi$.subscribe(data => {
-      let taxi = JSON.parse(data);
-
-      console.log(taxi.idTaxistaNotificacion);
-      console.log(taxi.id);
-      console.log(this.viaje.id);
-      if (this.viaje == {}) {
+      const taxi = JSON.parse(data);
+      if (this.viajes.length === 0) {
         return;
       }
-      if (this.viaje.id == taxi.idTaxistaNotificacion) {
-        console.log('Llegó', taxi);
+      const posicion = this.codigos.indexOf(taxi.idTaxistaNotificacion);
+      if (posicion !== -1) {
+        taxi.fechaViaje = this.obtenerFecha();
+        this.viajes[posicion].estado = 'Aceptado';
+        Swal.fire({
+          imageUrl: '../../../assets/Taxi-Icono.png',
+          imageWidth: 150,
+          imageHeight: 150,
+          title: 'Esperame tantito',
+          text: 'El Viaje ' + (posicion + 1) + ' ha sido aceptado',
+          showConfirmButton: false,
+          timer: 4000
+        });
       }
-      
     });
   }
 
   setUbicacion(ubicacion) {
     this.ubicacion = ubicacion;
-    console.log(this.ubicacion);
   }
 
   pedirTaxi(datos) {
@@ -60,15 +69,49 @@ export class HomeComponent implements OnInit, OnDestroy {
       longitud: `${this.ubicacion.lng}`,
       idUsuario: parseInt(datos.id, 10)
     };
-    console.log(this.viaje);
     this.viajeService.pedirViaje(this.viaje).subscribe(data => {
-      console.log(data);
+      data.estado = 'Esperando';
+      data.fechaViaje = this.obtenerFecha();
+      this.viajes.push(data);
+      this.codigos.push(data.id);
       this.viaje = data;
+      Swal.fire({
+        // icon: 'success',
+        imageUrl: '../../../assets/Persona-Icono.png',
+        imageWidth: 150,
+        imageHeight: 150,
+        title: 'Esperemos tantito una respuesta',
+        showConfirmButton: false,
+        timer: 4000
+      });
     }
-    // , err => {
-    //   console.log(err);
-    // }
+      // , err => {
+      //   console.log(err);
+      // }
     );
+  }
+
+  obtenerFecha() {
+    const fecha = new Date();
+    const dd = fecha.getDate();
+    const mm = fecha.getMonth() + 1;
+    const yyyy = fecha.getFullYear();
+    return dd + '-' + mm + '-' + yyyy;
+  }
+
+  cancelarViaje(index) {
+    this.viajeService.cancelarViaje(this.viajes[index]).subscribe(data => {
+      const guardarViaje = {
+        idUsuario: this.viajes[index].idUsuario,
+        fechaViaje: this.obtenerFecha(),
+        estado: 'Cancelado',
+        latitud: this.viajes[index].latitud,
+        longitud: this.viajes[index].longitud
+      };
+      this.viajeService.guardarViaje(guardarViaje).subscribe(data => {
+        this.viajes[index] = guardarViaje;
+      });
+    });
   }
 
   ngOnDestroy() {

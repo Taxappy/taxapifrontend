@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TaxistaService } from 'src/app/services/taxista.service';
 import { ViajesService } from 'src/app/services/viajes.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
@@ -10,18 +10,23 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class MapviewTaxistaComponent implements OnInit {
 
+  @Input() disponible = true;
+  @Input() viajes: any[] = [];
+  @Output() noficarViajeAceptado = new EventEmitter<any>();
 
   posActual = {
     lat: 6.250092011900809,
     lng: -75.5676583094607
   };
 
-  infoTaxista = {
+  infoTaxista: any = {
     username: ''
   };
 
-  viajes: any[] = [];
-  constructor( private viajeService: ViajesService, private tokenStorageService: TokenStorageService ) {
+  
+  constructor(private viajeService: ViajesService, private tokenStorageService: TokenStorageService) {
+    this.noficarViajeAceptado = new EventEmitter();
+
     const onUbicacionConcedida = ubicacion => {
       this.posActual.lat = ubicacion.coords.latitude;
       this.posActual.lng = ubicacion.coords.longitude;
@@ -38,40 +43,22 @@ export class MapviewTaxistaComponent implements OnInit {
     };
     // Solicitar
     navigator.geolocation.getCurrentPosition(onUbicacionConcedida, onErrorDeUbicacion, opcionesDeSolicitud);
-   }
+  }
 
   ngOnInit(): void {
-
-    this.viajeService.viajes$.subscribe(viajes => {
-      this.viajes = JSON.parse(viajes);
-    });
-
-    this.viajeService.getAllViajes().subscribe(viajes => {
-      this.viajes = viajes;
-    });
-
-    this.viajeService.initializeWebSocketRecibirViajes();
-
     this.infoTaxista = this.tokenStorageService.getUser();
-
   }
 
-  aceptarViaje(viaje){
+  aceptarViaje(viaje) {
 
-
-    let infoViajeAceptado = {
+    const infoViajeAceptado = {
       idTaxistaNotificacion: viaje.id,
-      placa: 'ABC123',
       idUsuario: viaje.idUsuario,
-      nombreTaxista: this.infoTaxista.username
+      nombreTaxista: this.infoTaxista.name,
+      latitud: viaje.latitud,
+      longitud: viaje.longitud
     };
-    console.log(infoViajeAceptado);
-    this.viajeService.aceptarViaje(infoViajeAceptado).subscribe(data => {
-      console.log(data);
-    });
-    
-    // console.log(viaje);
-    // console.log(this.tokenStorageService.getUser());
-  }
 
+    this.noficarViajeAceptado.emit(infoViajeAceptado);
+  }
 }

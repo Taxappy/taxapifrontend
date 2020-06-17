@@ -14,11 +14,13 @@ import { TaxistaOFListComponent } from './components/Empleados/taxista-oflist/ta
 import { HomeTaxistaComponent } from './components/taxista/home-taxista/home-taxista.component';
 import { HistorialTaxistaComponent } from './components/taxista/historial-taxista/historial-taxista.component';
 import { ConfiguracionesTaxistaComponent } from './components/taxista/configuraciones-taxista/configuraciones-taxista.component';
+import { HistorialUserComponent } from './components/historial-user/historial-user.component';
 
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'historial', component: HistorialUserComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: BoardUserComponent },

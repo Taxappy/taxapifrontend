@@ -50,15 +50,33 @@ export class ViajesService {
     });
   }
 
-  pedirViaje(info) {
+  pedirViaje(info): Observable<any> {
     return this.http.post(URL_MICROSERVER + '/viaje/notificacion/taxista', info);
+  }
+
+  cancelarViaje(viaje) {
+    return this.http.request('delete', URL_MICROSERVER + '/viaje/notificacion/taxista', {
+      body: viaje
+    });
   }
 
   getAllViajes(): Observable<any> {
     return this.http.get(URL_MICROSERVER + '/viaje/notificacion/taxista');
   }
 
+  getHistorialTaxista(idTaxista): Observable<any> {
+    return this.http.get(URL_MICROSERVER + '/viaje/taxista/' + idTaxista);
+  }
+
+  getHistorialUsuario(idUsuario): Observable<any> {
+    return this.http.get(URL_MICROSERVER + '/viaje/usuario/' + idUsuario);
+  }
+
   aceptarViaje(info): Observable<any> {
     return this.http.post(URL_MICROSERVER + '/viaje/notificacion/usuario', info);
+  }
+
+  guardarViaje(viaje): Observable<any> {
+    return this.http.post(URL_MICROSERVER + '/viaje', viaje);
   }
 }

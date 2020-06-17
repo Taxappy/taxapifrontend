@@ -1,5 +1,9 @@
 <div *ngFor="let marcadorA of marcadoresActual">
-    <agm-map (mapClick)="cambiarMarcador($event)" [latitude]="marcadorA.lat" [longitude]="marcadorA.lng" [zoom]="15">
-        <agm-marker *ngFor="let marcador of marcadores" [latitude]="marcador.lat" [longitude]="marcador.lng"></agm-marker>
-    </agm-map>
+    <div class="contenedor-mapa">
+        <agm-map (mapClick)="cambiarMarcador($event)" [latitude]="marcadorA.lat" [longitude]="marcadorA.lng"
+            [zoom]="15">
+            <agm-marker *ngFor="let marcador of marcadores" [latitude]="marcador.lat" [longitude]="marcador.lng">
+            </agm-marker>
+        </agm-map>
+    </div>
 </div>

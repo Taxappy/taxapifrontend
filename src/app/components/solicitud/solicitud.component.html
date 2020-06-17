@@ -1,14 +1,16 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn primarieColor" data-toggle="modal" data-target="#exampleModal">
- SOLICITAR TAXI
+<button type="button" class="btn boton-principal" data-toggle="modal" data-target="#solicitudModal">
+ !Solicitar Taxi¡
 </button>
 
+<!-- <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Primary link</a> -->
+
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="solicitudModal" tabindex="-1" role="dialog" aria-labelledby="solicitudModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Solicitud de taxi</h5>
+                <h5 class="modal-title" id="solicitudModalLabel">Solicitud de taxi</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -17,15 +19,14 @@
                 <form>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Numero de identificación</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="id" [(ngModel)]="datos.id" #id="ngModel">
-                        
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="id" [(ngModel)]="datos.id" #id="ngModel">                        
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Nombre del solicitante</label>
                         <input type="text" class="form-control" id="exampleInputPassword1" name="nombre" [(ngModel)]="datos.nombre" #nombre="ngModel">
                     </div>
 
-                    <button type="submit" class="btn btn-primary" (click)="pedirTaxi()" data-dismiss="modal" aria-label="Close">Solicitar taxi</button>
+                    <button type="submit" class="btn btn-outline-primary boton-secundario" (click)="pedirTaxi()" data-dismiss="modal" aria-label="Close">Solicitar taxi</button>
                 </form>
             </div>
         </div>
