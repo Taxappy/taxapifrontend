@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-solicitud',
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SolicitudComponent implements OnInit {
 
-  constructor() { }
+  datos = {
+    id: '',
+    nombre: ''
+  };
+
+  @Output() pedirViaje = new EventEmitter<any>();
+
+  constructor(private tokenStorageService: TokenStorageService) {
+    this.pedirViaje = new EventEmitter();
+
+    if (!!this.tokenStorageService.getToken()) {
+      this.datos.id = this.tokenStorageService.getUser().identificacion;
+      this.datos.nombre = this.tokenStorageService.getUser().name;
+    }
+  }
 
   ngOnInit(): void {
+  }
+
+  pedirTaxi() {
+    this.pedirViaje.emit(this.datos);
   }
 
 }

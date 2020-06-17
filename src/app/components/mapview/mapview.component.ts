@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Marcador } from '../../class/marcador.class';
 
 
@@ -20,33 +20,20 @@ export class MapviewComponent implements OnInit {
 
   lat: number;
   lng: 75.61827329202217;
-/*
-  mostrarUbicacion(ubicacion) {
-    console.log('entre aqui')
-    const lng = ubicacion.coords.longitude;
-    const lat = ubicacion.coords.latitude;
-    console.log(`longitud: ${lng} | latitud: ${lat}`);
 
-    // console.log('longitud: ${lng} | latitud: ${lat}');
-    // // const nuevoMarcador = new Marcador(lat, lng);
-    // // this.marcadores.push(nuevoMarcador);
-    // const nuevoMarcador = new Marcador(6.150344, -75.61827329202217);
-    // this.marcadores.push(nuevoMarcador);
-    // console.log(this.marcadores);
+  @Output() ubicacion = new EventEmitter<any>();
 
-  }
-*/
   constructor() {
 
     // this.marcadores = [];
 
-
+    this.ubicacion = new EventEmitter();
     const onUbicacionConcedida = ubicacion => {
       this.marcadores = [];
       const nuevoMarcador = new Marcador(ubicacion.coords.latitude, ubicacion.coords.longitude);
       this.marcadores.push(nuevoMarcador);
       this.marcadoresActual.push(nuevoMarcador);
-      console.log(this.marcadores);
+      this.ubicacion.emit({lat: ubicacion.coords.latitude, lng: ubicacion.coords.longitude});
     }
 
     const onErrorDeUbicacion = err => {
@@ -76,6 +63,6 @@ export class MapviewComponent implements OnInit {
     const coords: { lat: number, lng: number } = evento.coords;
     const nuevoMarcador = new Marcador(coords.lat, coords.lng);
     this.marcadores.push(nuevoMarcador);
-    console.log(this.marcadores);
+    this.ubicacion.emit(coords);
   }
 }

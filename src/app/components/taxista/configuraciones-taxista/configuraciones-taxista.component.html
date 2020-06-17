@@ -1,0 +1,27 @@
+<div class="contenedor-info">
+    <h1>Cambiar de Taxi</h1>
+    <h4 *ngIf="taxista.taxi">Taxi actual</h4>
+    <div class="col mb-4" *ngIf="taxista.taxi">
+        <div class="hvr-shadow card h-100 ">
+            <div class="card-body">
+                <h5 class="card-title">Placa: {{placa}}</h5>
+            </div>
+        </div>
+    </div>
+    <div class="elemento-home-taxista" id="seleccion-taxi">
+        <h4>Seleccione taxi</h4>
+        <div class="row row-cols-1 row-cols-md-3">
+            <div class="col mb-4" *ngFor='let taxi of taxis; let i = index'>
+                <div class="hvr-shadow card h-100 ">
+                    <div class="card-body">
+                        <h5 class="card-title">Placa: {{taxi.placa}}</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary boton-principal"
+                            (click)="seleccionarTaxi(taxi)">Seleccionar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

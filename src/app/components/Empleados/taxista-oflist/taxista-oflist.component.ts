@@ -20,14 +20,12 @@ export class TaxistaOFListComponent implements OnInit {
   ngOnInit(): void {
     this.serviceTaxista.getAllTaxista().subscribe((data) => {
       this.TaxistasB2 = data;
-      // console.log(this.TaxistasB2);
       for (let index = 0; index < this.TaxistasB2.length; index++) {
         const identificacionTaxista = this.TaxistasB2[index].idTaxista;
         this.serviceTaxista
           .getONETaxistaBLog(identificacionTaxista)
           .subscribe((taxistaData) => {
             this.ArrayTaxista.push(taxistaData);
-            console.log(this.ArrayTaxista);
           });
       }
     });

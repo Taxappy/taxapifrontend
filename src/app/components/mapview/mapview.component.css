@@ -1,3 +1,9 @@
+.contenedor-mapa {
+    border: 2px solid rgb(185, 185, 185);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
 agm-map {
     height: 500px;
 }

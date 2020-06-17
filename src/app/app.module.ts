@@ -29,6 +29,12 @@ import { SolicitudComponent } from './components/solicitud/solicitud.component';
 import { ListTaxiComponent } from './components/taxi/list-taxi/list-taxi.component';
 import { TaxiHomeComponent } from './components/taxi/taxi-home/taxi-home.component';
 import { CreateTaxiComponent } from './components/taxi/create-taxi/create-taxi.component';
+import { ConfiguracionesTaxistaComponent } from './components/taxista/configuraciones-taxista/configuraciones-taxista.component';
+import { HistorialTaxistaComponent } from './components/taxista/historial-taxista/historial-taxista.component';
+import { HomeTaxistaComponent } from './components/taxista/home-taxista/home-taxista.component';
+import { MapviewTaxistaComponent } from './components/taxista/mapview-taxista/mapview-taxista.component';
+import { HistorialViajesComponent } from './components/historial-viajes/historial-viajes.component';
+import { HistorialUserComponent } from './components/historial-user/historial-user.component';
 
 
 
@@ -48,7 +54,13 @@ import { CreateTaxiComponent } from './components/taxi/create-taxi/create-taxi.c
     TaxiHomeComponent,
     CreateTaxiComponent,
     HomeEmpleadosComponent,
-    TaxistaOFListComponent
+    TaxistaOFListComponent,
+    ConfiguracionesTaxistaComponent,
+    HistorialTaxistaComponent,
+    HomeTaxistaComponent,
+    MapviewTaxistaComponent,
+    HistorialViajesComponent,
+    HistorialUserComponent
 
   ],
   imports: [
@@ -58,7 +70,7 @@ import { CreateTaxiComponent } from './components/taxi/create-taxi/create-taxi.c
     HttpClientModule,
     SweetAlert2Module.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCWOR0jWaJbXeWJ6-UgMOIPT_d7O1idxiE'
+      apiKey: 'AIzaSyA0PxNhTdJ1HACpns_poydiwy0vFvTczq8'
     })
   ],
   providers: [authInterceptorProviders],
